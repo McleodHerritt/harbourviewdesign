@@ -1,0 +1,119 @@
+.contact-wrapper {
+	background-color: var(--accent-color);
+	padding: 1em 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.contact-container {
+	padding: 1em;
+	margin: 0 5em;
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+	border-radius: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	max-width: 50vw;
+
+	@media (max-width: 1000px) {
+		max-width: 95%;
+		margin: 0;
+		padding: 1rem;
+	}
+}
+
+.contact-container h1 {
+	margin: 0.5em 0;
+	padding: 0.5em;
+	border-bottom: 5px solid var(--secondary-color);
+}
+
+.contact-container p {
+	margin: 0.5em 0;
+}
+
+.contact-container form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.contact-container form input,
+.contact-container form textarea {
+	margin: 0.5em 0;
+	padding: 0.5em;
+	border-radius: 5px;
+	border: none;
+}
+
+.contact-container form textarea {
+	height: 100px;
+	resize: none;
+}
+
+.contact-container form button {
+	margin: 0.5em 0;
+	padding: 0.5em;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: var(--accent-color);
+}
+
+.contact-container form button:hover {
+	background-color: var(--secondary-color);
+	transform: scale(1.01);
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+}
+
+.contact-container form button:disabled {
+	background-color: #cccccc;
+	cursor: default;
+}
+
+.contact-container form button:disabled:hover {
+	background-color: #cccccc;
+	box-shadow: none;
+	cursor: default;
+	transform: none;
+}
+
+.contact-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	@media (max-width: 1000px) {
+		flex-direction: column;
+	}
+}
+
+.contact-info div {
+	flex: 1;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	font-size: 0.75em;
+}
+
+.contact-info h2 {
+	color: var(--accent-color);
+}
+
+.email-info {
+	align-items: flex-start;
+
+	@media (max-width: 1000px) {
+		align-items: center;
+	}
+}
+
+.phone-info {
+	align-items: flex-end;
+	@media (max-width: 1000px) {
+		align-items: center;
+	}
+}
