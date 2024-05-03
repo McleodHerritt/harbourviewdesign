@@ -5,9 +5,6 @@ import { faAnchor, faShip, faCompass } from "@fortawesome/free-solid-svg-icons";
 import ctaBackground from "./images/breakwater-after-sunset-SBI-300145284.jpg";
 
 import logo from "./images/harbourView.png";
-import clarBeckett from "./images/testimonials/ClaraBeckett.jpg";
-import liamMacInnis from "./images/testimonials/LiamMacInnis.jpg";
-import sophieMacDougall from "./images/testimonials/SophieMacDougall.jpg";
 import hero from "./images/open-hand-palms-holding-metal-compass.jpg";
 import ctaIcon from "./images/cta-icon.svg";
 
@@ -25,14 +22,17 @@ import sunsetPhoto from "./images/young-man-enjoying-the-sunset.jpg";
 import React, { useRef, useState, useEffect } from "react";
 import { Spin as Hamburger } from "hamburger-react";
 import Contact from "./Contact";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
 	const testimonialRef = useRef(null);
 	const portfolioRef = useRef(null);
 	const servicesRef = useRef(null);
+	const pricesRef = useRef(null);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isContactPage, setIsContactPage] = useState(false);
 	const [activeSection, setActiveSection] = useState("");
+	const transactionId = uuidv4();
 
 	useEffect(() => {
 		if (!isContactPage && activeSection) {
@@ -52,6 +52,8 @@ function App() {
 				return portfolioRef;
 			case "testimonials":
 				return testimonialRef;
+			case "prices":
+				return pricesRef;
 			default:
 				return null;
 		}
@@ -64,6 +66,10 @@ function App() {
 			behavior: "smooth", // Optional: adds an animation
 		});
 		setIsContactPage(true);
+		window.gtag("event", "conversion", {
+			send_to: "AW-11079642556/unoUCKqns6kZELzbl6Mp",
+			transaction_id: transactionId,
+		});
 	};
 
 	const smoothScrollTo = (element, duration, offset) => {
@@ -142,6 +148,15 @@ function App() {
 								>
 									Testimonials
 								</li> */}
+								<li
+									onClick={() => {
+										setIsContactPage(false);
+										setActiveSection("prices");
+										setIsMenuOpen(false);
+									}}
+								>
+									Prices
+								</li>
 								<li
 									onClick={() => {
 										showContactForm();
@@ -384,6 +399,51 @@ function App() {
 							<p>-Sophie MacDougall, COO, East Coast Craft Brewers</p>
 						</div>
 					</section> */}
+					<section ref={pricesRef} className="prices">
+						<div className="prices-container">
+							<h1>Starting at just $500</h1>
+							<p>Our pricing is transparent and affordable, with packages starting at just $500.</p>
+							<p>Whether you're a small business looking to establish an online presence</p>
+							<p>
+								or a large corporation in need of a website overhaul, we have a solution for you.
+							</p>
+							<div className="price-cards">
+								<div className="price-card">
+									<h3>Basic</h3>
+									<p>Starting at $500</p>
+									<ul>
+										<li>Custom 1-2 page website</li>
+										<li>Responsive development</li>
+										<li>Reflecting Your Branding</li>
+									</ul>
+									<button onClick={showContactForm}>Get Started</button>
+								</div>
+								<div className="price-card">
+									<h3>Standard</h3>
+									<p>Starting at $1000</p>
+									<ul>
+										<li>Custom 3-8 page website</li>
+										<li>Responsive development</li>
+										<li>Reflecting Your Branding</li>
+										<li>SEO</li>
+									</ul>
+									<button onClick={showContactForm}>Get Started</button>
+								</div>
+								<div className="price-card">
+									<h3>Pro</h3>
+									<p>Starting at $2000</p>
+									<ul>
+										<li>Custom 8+ page website</li>
+										<li>E-commerce available</li>
+										<li>Responsive development</li>
+										<li>Reflecting Your Branding</li>
+										<li>SEO</li>
+									</ul>
+									<button onClick={showContactForm}>Get Started</button>
+								</div>
+							</div>
+						</div>
+					</section>
 				</div>
 			)}
 			<footer>
@@ -407,6 +467,14 @@ function App() {
 									}}
 								>
 									Portfolio
+								</li>
+								<li
+									onClick={() => {
+										setIsContactPage(false);
+										setActiveSection("portfolio");
+									}}
+								>
+									Prices
 								</li>
 								{/* <li
 									onClick={() => {
